@@ -157,7 +157,7 @@ Cell pointCell (const nav_msgs::MapMetaData& info, const geometry_msgs::Point& p
   return Cell(floor(p2.x()/info.resolution), floor(p2.y()/info.resolution));
 }
 
-inline 
+inline
 index_t pointIndex (const nav_msgs::MapMetaData& info, const geometry_msgs::Point& p)
 {
   return cellIndex(info, pointCell(info, p));

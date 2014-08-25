@@ -18,6 +18,8 @@ find_package(PythonLibs REQUIRED)
 find_package(Bullet REQUIRED)
 find_package(OpenCV REQUIRED)
 
+catkin_python_setup()
+
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
@@ -50,7 +52,7 @@ include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Build
-add_library(grid_utils 
+add_library(grid_utils
     src/ray_tracer.cpp
     src/grid_overlay.cpp
     src/shortest_path.cpp
@@ -76,7 +78,7 @@ target_link_libraries(grid_utils_boost_python_exports grid_utils ${PYTHON_LIBRAR
 ## Install ##
 #############
 ## Mark executables and/or libraries for installation
-install(TARGETS grid_construction_node grid_utils grid_utils_boost_python_exports 
+install(TARGETS grid_construction_node grid_utils grid_utils_boost_python_exports
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -86,6 +88,5 @@ install(TARGETS grid_construction_node grid_utils grid_utils_boost_python_export
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
 )
 
